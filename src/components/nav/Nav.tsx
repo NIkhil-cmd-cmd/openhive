@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Race Demo', href: '#race-demo' },
   { label: 'Technical', href: '#technical' },
-  { label: 'Demo', href: '#demo' },
   { label: 'GitHub', href: 'https://github.com/hivemind', external: true },
 ];
 
