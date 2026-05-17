@@ -1,3 +1,5 @@
+import { GITHUB_REPO } from '../../lib/site';
+
 function HexLogo() {
   return (
     <svg width="24" height="28" viewBox="0 0 28 32" fill="none" aria-hidden>
@@ -19,7 +21,7 @@ export function Footer() {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-6 font-mono text-sm text-muted">
-          <a href="https://github.com/hivemind" className="hover:text-amber transition-colors">
+          <a href={GITHUB_REPO} className="hover:text-amber transition-colors" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           <a href="#" className="hover:text-amber transition-colors">

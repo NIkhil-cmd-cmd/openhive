@@ -3,6 +3,7 @@ import { HiveCanvas } from './HiveCanvas';
 import { AgentStatusBar } from './AgentStatusBar';
 import { Button } from '../ui/Button';
 import { useInViewport } from '../../hooks/useInViewport';
+import { GITHUB_REPO } from '../../lib/site';
 
 const HEADLINE_WORDS = ['AI', 'AGENTS', 'THAT', 'THINK', 'TOGETHER.'];
 
@@ -67,12 +68,12 @@ export function Hero() {
             SEE HOW IT WORKS
           </Button>
           <Button
-            href="https://github.com/hivemind"
+            href={GITHUB_REPO}
             variant="secondary"
             size="md"
             className="font-mono text-sm"
           >
-            → github.com/hivemind
+            → github.com/NIkhil-cmd-cmd/openhive
           </Button>
         </motion.div>
       </div>

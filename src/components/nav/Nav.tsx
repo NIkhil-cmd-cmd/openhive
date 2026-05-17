@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { GITHUB_REPO } from '../../lib/site';
 
 const LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Technical', href: '#technical' },
   { label: 'Demo', href: '#demo' },
-  { label: 'GitHub', href: 'https://github.com/hivemind', external: true },
+  { label: 'GitHub', href: GITHUB_REPO, external: true },
 ];
 
 function HexLogo() {
@@ -57,7 +58,7 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="https://github.com/hivemind"
+            href={GITHUB_REPO}
             target="_blank"
             rel="noopener noreferrer"
             className="hex-clip-btn bg-amber text-bg font-display text-sm px-5 py-2 tracking-wide hover:shadow-[0_0_20px_var(--amber-glow)] transition-all"
@@ -102,7 +103,9 @@ export function Nav() {
                 </a>
               ))}
               <a
-                href="https://github.com/hivemind"
+                href={GITHUB_REPO}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hex-clip-btn bg-amber text-bg font-display text-center py-3 tracking-wide"
               >
                 GET THE CODE
