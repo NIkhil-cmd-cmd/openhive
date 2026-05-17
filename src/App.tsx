@@ -6,6 +6,7 @@ const Problem = lazy(() => import('./components/problem/Problem').then((m) => ({
 const Solution = lazy(() => import('./components/solution/Solution').then((m) => ({ default: m.Solution })));
 const Pipeline = lazy(() => import('./components/pipeline/Pipeline').then((m) => ({ default: m.Pipeline })));
 const Technical = lazy(() => import('./components/technical/Technical').then((m) => ({ default: m.Technical })));
+const RaceDemo = lazy(() => import('./components/raceDemo/RaceDemo').then((m) => ({ default: m.RaceDemo })));
 const Demo = lazy(() => import('./components/demo/Demo').then((m) => ({ default: m.Demo })));
 const BuiltOn = lazy(() => import('./components/builtOn/BuiltOn').then((m) => ({ default: m.BuiltOn })));
 const CTA = lazy(() => import('./components/cta/CTA').then((m) => ({ default: m.CTA })));
@@ -32,6 +33,9 @@ export default function App() {
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <Technical />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <RaceDemo />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <Demo />

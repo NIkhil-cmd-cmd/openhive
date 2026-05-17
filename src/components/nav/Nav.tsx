@@ -4,6 +4,7 @@ import { GITHUB_REPO } from '../../lib/site';
 
 const LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Race Demo', href: '#race-demo' },
   { label: 'Technical', href: '#technical' },
   { label: 'Demo', href: '#demo' },
   { label: 'GitHub', href: GITHUB_REPO, external: true },
