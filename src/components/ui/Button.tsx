@@ -11,9 +11,9 @@ interface ButtonProps {
 }
 
 const sizes = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-base',
-  lg: 'px-8 py-4 text-lg',
+  sm: 'px-4 py-2 text-min',
+  md: 'px-6 py-3 text-body',
+  lg: 'px-8 py-4 text-body-lg',
 };
 
 const variants = {

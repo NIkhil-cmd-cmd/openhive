@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['"Bebas Neue"', 'Impact', 'sans-serif'],
         mono: ['"DM Mono"', '"Courier New"', 'monospace'],
       },

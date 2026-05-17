@@ -39,7 +39,7 @@ export function buildNodes(current: FlowPhase, mode: PathMode): Node<HiveNodeDat
     ...AGENTS.map((a, i) => ({
       id: a.id,
       type: 'agent' as const,
-      position: { x: 0, y: i * 110 },
+      position: { x: 0, y: i * 150 },
       data: {
         label: a.label,
         prompt: a.prompt,
@@ -51,7 +51,7 @@ export function buildNodes(current: FlowPhase, mode: PathMode): Node<HiveNodeDat
     {
       id: 'embed',
       type: 'layer',
-      position: { x: 280, y: 100 },
+      position: { x: 340, y: 120 },
       data: {
         label: 'EMBEDDING LAYER',
         sublabel: 'text-embedding-3-small',
@@ -63,13 +63,13 @@ export function buildNodes(current: FlowPhase, mode: PathMode): Node<HiveNodeDat
     {
       id: 'hive',
       type: 'hive',
-      position: { x: 500, y: 70 },
-      data: { label: 'HIVEMIND MEMORY', active: lit('hive'), dimmed: dim('hive') },
+      position: { x: 620, y: 90 },
+      data: { label: 'OPENHIVE MEMORY', active: lit('hive'), dimmed: dim('hive') },
     },
     {
       id: 'knn',
       type: 'knn',
-      position: { x: 680, y: 90 },
+      position: { x: 860, y: 110 },
       data: {
         label: 'KNN',
         knnItems: KNN_ITEMS,
@@ -80,13 +80,13 @@ export function buildNodes(current: FlowPhase, mode: PathMode): Node<HiveNodeDat
     {
       id: 'markov',
       type: 'markov',
-      position: { x: 960, y: 40 },
+      position: { x: 1180, y: 50 },
       data: { label: 'Markov', active: lit('markov'), dimmed: dim('markov') },
     },
     {
       id: 'execute',
       type: 'execute',
-      position: { x: 900, y: 380 },
+      position: { x: 1100, y: 500 },
       data: {
         label: 'Execute',
         execSteps: EXEC_STEPS,
@@ -97,7 +97,7 @@ export function buildNodes(current: FlowPhase, mode: PathMode): Node<HiveNodeDat
     {
       id: 'writeback',
       type: 'writeback',
-      position: { x: 520, y: 400 },
+      position: { x: 640, y: 520 },
       data: { label: 'Writeback', active: lit('writeback'), dimmed: dim('writeback') },
     },
   ];
@@ -118,7 +118,7 @@ function edge(
     animated: opts.animated,
     style: {
       stroke: opts.stroke ?? 'var(--amber)',
-      strokeWidth: 2,
+      strokeWidth: 3,
       strokeDasharray: opts.dashed ? '8 6' : undefined,
     },
   };

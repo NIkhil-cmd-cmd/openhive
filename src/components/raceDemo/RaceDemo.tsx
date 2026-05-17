@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Section } from '../ui/Section';
+import { Slide } from '../ui/Slide';
 import { recordTransition, type MarkovState } from '../../lib/markov';
 import { AgentPanel } from './AgentPanel';
 import { EmbeddingCloud } from './EmbeddingCloud';
 import { RaceMarkovGraph } from './RaceMarkovGraph';
 import {
-  REAL_ESTATE_PROMPT,
+  FLIGHT_PROMPT,
   COLD_STEPS,
   WARM_STEPS,
   COLD_MARKOV_PATH,
@@ -177,30 +177,19 @@ export function RaceDemo() {
   const warmHighlightPath = phase === 'warm' || phase === 'done' ? WARM_MARKOV_PATH : [];
 
   return (
-    <Section id="race-demo" showGrid={false} tone="elevated">
-      {/* Section label */}
-      <p className="font-mono text-xs text-amber tracking-widest text-center mb-3">INTERACTIVE DEMO</p>
-
-      <motion.h2
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="font-display text-5xl md:text-6xl text-white text-center leading-tight mb-4"
-      >
-        WATCH THE RACE.
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="font-mono text-sm text-muted text-center mb-10 max-w-xl mx-auto leading-relaxed"
-      >
-        A real estate agent runs cold with no memory — then HiveMind loads 40 historical traces
-        and runs the same task in{' '}
-        <span className="text-amber">{SAVINGS_PCT}% fewer tokens</span> and{' '}
-        <span className="text-teal-light">{SPEED_PCT}% less time</span>.
-      </motion.p>
+    <Slide
+      id="demo"
+      step="06"
+      label="Demo"
+      title="COLD VS WARM AGENT."
+      tone="elevated"
+      innerClassName="max-w-7xl"
+      className="!justify-start"
+    >
+      <p className="text-body-lg text-muted text-center mb-10 max-w-2xl mx-auto">
+        Same prompt. Cold agent has no memory. Warm agent uses the hive —{' '}
+        <span className="text-amber">{SAVINGS_PCT}% fewer tokens</span>.
+      </p>
 
       {/* Prompt card */}
       <motion.div
@@ -210,14 +199,14 @@ export function RaceDemo() {
         className="panel p-5 mb-8 max-w-3xl mx-auto"
       >
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-[10px] text-amber tracking-widest">INCOMING BUYER PROMPT</span>
+          <span className="font-mono text-min text-amber tracking-widest">INCOMING PROMPT</span>
           <AnimatePresence>
             {showPromptEmbed && (
               <motion.span
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0 }}
-                className="font-mono text-[10px] text-teal-light flex items-center gap-1"
+                className="font-mono text-min text-teal-light flex items-center gap-1"
               >
                 <motion.span
                   animate={{ opacity: [1, 0.3, 1] }}
@@ -225,13 +214,13 @@ export function RaceDemo() {
                 >
                   ●
                 </motion.span>{' '}
-                embedding generated → first_time_buyer cluster
+                embedding generated → flight_booking cluster
               </motion.span>
             )}
           </AnimatePresence>
         </div>
-        <p className="font-mono text-sm text-white leading-relaxed">
-          &ldquo;{REAL_ESTATE_PROMPT}&rdquo;
+        <p className="font-mono text-body text-white leading-relaxed">
+          &ldquo;{FLIGHT_PROMPT}&rdquo;
         </p>
       </motion.div>
 
@@ -246,7 +235,7 @@ export function RaceDemo() {
           >
             <button
               onClick={() => setPhase('cold')}
-              className="hex-clip-btn bg-amber text-bg font-display text-2xl px-12 py-4 tracking-wider hover:shadow-[0_0_32px_rgba(245,166,35,0.4)] transition-all"
+              className="hex-clip-btn bg-amber text-bg font-display text-2xl px-10 py-4 tracking-wider hover:shadow-[0_0_32px_rgba(245,166,35,0.4)] transition-all"
             >
               START DEMO ▶
             </button>
@@ -274,7 +263,7 @@ export function RaceDemo() {
             />
             <AgentPanel
               label="WARM AGENT"
-              sublabel="HIVEMIND ENABLED · MARKOV-GUIDED"
+              sublabel="OPENHIVE ENABLED · MARKOV-GUIDED"
               steps={WARM_STEPS}
               revealedCount={warmRevealedCount}
               tokens={warmTokens}
@@ -298,12 +287,12 @@ export function RaceDemo() {
             className="panel p-4 mb-6 max-w-3xl mx-auto overflow-hidden"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="font-mono text-[10px] text-amber tracking-widest">
+              <span className="font-mono text-min text-amber tracking-widest">
                 {phase === 'learning'
                   ? 'INGESTING HISTORICAL TRACES INTO MARKOV MODEL…'
                   : '✓ MARKOV MODEL UPDATED'}
               </span>
-              <span className="font-mono text-xs text-white tabular-nums">
+              <span className="font-mono text-min text-white tabular-nums">
                 {learnProgress} / {SYNTHETIC_TRACES.length}
               </span>
             </div>
@@ -315,7 +304,7 @@ export function RaceDemo() {
               />
             </div>
             {phase !== 'learning' && learnProgress === SYNTHETIC_TRACES.length && (
-              <p className="font-mono text-[10px] text-teal-light">
+              <p className="font-mono text-min text-teal-light">
                 {SYNTHETIC_TRACES.length} traces learned — optimal path now dominant in graph
               </p>
             )}
@@ -333,15 +322,15 @@ export function RaceDemo() {
             className="grid md:grid-cols-2 gap-5 mb-6"
           >
             <div className="panel p-4">
-              <h3 className="font-mono text-[10px] text-amber tracking-widest mb-3">
+              <h3 className="font-mono text-min text-amber tracking-widest mb-3">
                 EMBEDDING SPACE
               </h3>
               <EmbeddingCloud points={embeddingPoints} showPrompt={showPromptEmbed} />
             </div>
 
             <div className="panel p-4">
-              <h3 className="font-mono text-[10px] text-amber tracking-widest mb-3">
-                MARKOV GRAPH · REAL ESTATE WORKFLOW
+              <h3 className="font-mono text-min text-amber tracking-widest mb-3">
+                MARKOV GRAPH · FLIGHT BOOKING
               </h3>
               <RaceMarkovGraph
                 state={markovState}
@@ -350,7 +339,7 @@ export function RaceDemo() {
                 active
               />
               {markovState.transitions.length > 0 && (
-                <p className="font-mono text-[9px] text-muted mt-1 text-right">
+                <p className="font-mono text-min text-muted mt-1 text-right">
                   {markovState.transitions.length} transitions recorded
                 </p>
               )}
@@ -367,39 +356,39 @@ export function RaceDemo() {
             animate={{ opacity: 1, y: 0 }}
             className="panel p-6 max-w-3xl mx-auto"
           >
-            <p className="font-mono text-[10px] text-amber tracking-widest mb-5 text-center">
+            <p className="font-mono text-min text-amber tracking-widest mb-5 text-center">
               RESULTS
             </p>
 
             <div className="grid grid-cols-3 gap-4 mb-5 text-center">
               <div>
-                <p className="font-mono text-[10px] text-muted mb-1">COLD TOKENS</p>
-                <p className="font-display text-3xl text-white">{TOTAL_COLD_TOKENS.toLocaleString()}</p>
-                <p className="font-mono text-[10px] text-muted">{(TOTAL_COLD_MS / 1000).toFixed(1)}s</p>
+                <p className="font-mono text-min text-muted mb-1">COLD TOKENS</p>
+                <p className="font-display text-5xl text-white">{TOTAL_COLD_TOKENS.toLocaleString()}</p>
+                <p className="font-mono text-min text-muted">{(TOTAL_COLD_MS / 1000).toFixed(1)}s</p>
               </div>
               <div>
-                <p className="font-mono text-[10px] text-amber tracking-wider mb-1">SAVINGS</p>
-                <p className="font-display text-4xl text-amber">{SAVINGS_PCT}%</p>
-                <p className="font-mono text-[10px] text-teal-light">{SPEED_PCT}% faster</p>
+                <p className="font-mono text-min text-amber tracking-wider mb-1">SAVINGS</p>
+                <p className="font-display text-6xl text-amber">{SAVINGS_PCT}%</p>
+                <p className="font-mono text-min text-teal-light">{SPEED_PCT}% faster</p>
               </div>
               <div>
-                <p className="font-mono text-[10px] text-muted mb-1">WARM TOKENS</p>
-                <p className="font-display text-3xl text-teal-light">{TOTAL_WARM_TOKENS.toLocaleString()}</p>
-                <p className="font-mono text-[10px] text-muted">{(TOTAL_WARM_MS / 1000).toFixed(1)}s</p>
+                <p className="font-mono text-min text-muted mb-1">WARM TOKENS</p>
+                <p className="font-display text-5xl text-teal-light">{TOTAL_WARM_TOKENS.toLocaleString()}</p>
+                <p className="font-mono text-min text-muted">{(TOTAL_WARM_MS / 1000).toFixed(1)}s</p>
               </div>
             </div>
 
             {/* Token bars */}
             <div className="space-y-2 mb-5">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] text-muted w-10 text-right">COLD</span>
+                <span className="font-mono text-min text-muted w-10 text-right">COLD</span>
                 <div className="flex-1 h-3 bg-bg-3 rounded-full overflow-hidden">
                   <div className="h-full bg-amber-dim rounded-full" style={{ width: '100%' }} />
                 </div>
-                <span className="font-mono text-[10px] text-muted w-16">{TOTAL_COLD_TOKENS.toLocaleString()}</span>
+                <span className="font-mono text-min text-muted w-16">{TOTAL_COLD_TOKENS.toLocaleString()}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] text-muted w-10 text-right">WARM</span>
+                <span className="font-mono text-min text-muted w-10 text-right">WARM</span>
                 <div className="flex-1 h-3 bg-bg-3 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: '100%' }}
@@ -409,14 +398,14 @@ export function RaceDemo() {
                     style={{ background: 'var(--teal-light)' }}
                   />
                 </div>
-                <span className="font-mono text-[10px] text-teal-light w-16">{TOTAL_WARM_TOKENS.toLocaleString()}</span>
+                <span className="font-mono text-min text-teal-light w-16">{TOTAL_WARM_TOKENS.toLocaleString()}</span>
               </div>
             </div>
 
             <div className="flex justify-center">
               <button
                 onClick={handleReset}
-                className="font-mono text-[11px] text-amber border border-amber-dim px-6 py-2 rounded hover:bg-[var(--amber-glow)] transition-colors"
+                className="font-mono text-min text-amber border border-amber-dim px-6 py-2 rounded hover:bg-[var(--amber-glow)] transition-colors"
               >
                 ↺ RESET DEMO
               </button>
@@ -424,6 +413,6 @@ export function RaceDemo() {
           </motion.div>
         )}
       </AnimatePresence>
-    </Section>
+    </Slide>
   );
 }

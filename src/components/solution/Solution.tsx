@@ -1,46 +1,36 @@
 import { motion } from 'framer-motion';
-import { Section } from '../ui/Section';
-import { HexBadge } from '../ui/HexBadge';
+import { Slide } from '../ui/Slide';
 import { HiveDiagram } from './HiveDiagram';
-
-const BENEFITS = ['Token Efficient', 'Model Agnostic', 'Infinitely Scalable'];
 
 export function Solution() {
   return (
-    <Section id="solution" tone="elevated">
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <Slide id="solution" step="03" label="Solution" title="OPENHIVE: ONE MEMORY FOR ALL AGENTS." tone="elevated">
+      <div className="grid lg:grid-cols-2 gap-10 items-center">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="panel p-6 flex justify-center"
+          className="panel p-8 flex justify-center"
         >
           <HiveDiagram />
         </motion.div>
-
         <div>
-          <p className="font-mono text-xs text-amber tracking-widest mb-3">THE SOLUTION</p>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-display text-5xl md:text-6xl text-white leading-tight mb-5"
-          >
-            THE HIVE NEVER FORGETS.
-          </motion.h2>
-          <p className="font-mono text-sm text-muted leading-relaxed mb-6">
-            HiveMind gives every agent access to collective memory. New agents inherit experience
-            instantly. The hive compounds knowledge with every run.
+          <p className="text-body-lg text-muted mb-6">
+            Every agent reads and writes the same vector memory. New runs inherit past tool paths instantly.
           </p>
-          <motion.div className="flex flex-wrap gap-2">
-            {BENEFITS.map((b) => (
-              <HexBadge key={b} variant="outline" size="sm">
-                ⬡ {b}
-              </HexBadge>
-            ))}
-          </motion.div>
+          <ul className="space-y-5 text-body-lg text-white font-semibold">
+            <li className="flex items-center gap-3">
+              <span className="text-amber text-2xl">⬡</span> Fewer tool calls
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-amber text-2xl">⬡</span> Faster responses
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-amber text-2xl">⬡</span> Compounds over time
+            </li>
+          </ul>
         </div>
       </div>
-    </Section>
+    </Slide>
   );
 }

@@ -118,7 +118,7 @@ export function EmbeddingCloud({ points, showPrompt }: EmbeddingCloudProps) {
       {/* Legend */}
       <div className="flex flex-wrap gap-3 mt-2">
         {clusterBubbles.map((c) => (
-          <span key={c.key} className="flex items-center gap-1 font-mono text-[9px] text-muted">
+          <span key={c.key} className="flex items-center gap-1 font-mono text-min text-muted">
             <span className="w-2 h-2 rounded-full inline-block" style={{ background: c.color }} />
             {c.label}
           </span>

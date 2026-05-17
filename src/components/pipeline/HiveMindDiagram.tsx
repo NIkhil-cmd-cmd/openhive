@@ -84,7 +84,7 @@ function HiveMindFlow() {
             key={m}
             type="button"
             onClick={() => onPathMode(m)}
-            className={`font-mono text-[10px] px-3 py-1.5 rounded border transition-colors ${
+            className={`font-mono text-min px-5 py-3 rounded-lg border transition-colors ${
               pathMode === m
                 ? 'border-amber text-amber bg-[var(--amber-glow)]'
                 : 'border-border text-muted hover:text-white'
@@ -97,19 +97,19 @@ function HiveMindFlow() {
           type="button"
           onClick={runTour}
           disabled={playing}
-          className="font-mono text-[10px] px-4 py-1.5 rounded bg-amber text-bg disabled:opacity-50"
+          className="font-mono text-min px-6 py-3 rounded-lg bg-amber text-bg disabled:opacity-50 font-semibold"
         >
           {playing ? 'Playing…' : '▶ Play flow'}
         </button>
       </div>
 
       <div className="flex justify-between px-4 mb-2 max-w-4xl mx-auto">
-        <span className="font-mono text-[9px] text-muted tracking-widest">AGENTS</span>
-        <span className="font-mono text-[9px] text-muted tracking-widest">HIVE CORE</span>
-        <span className="font-mono text-[9px] text-muted tracking-widest">ROUTING</span>
+        <span className="font-mono text-label text-muted tracking-widest">AGENTS</span>
+        <span className="font-mono text-label text-muted tracking-widest">HIVE CORE</span>
+        <span className="font-mono text-label text-muted tracking-widest">ROUTING</span>
       </div>
 
-      <div className="h-[580px] md:h-[620px] w-full rounded-xl border border-border overflow-hidden bg-[#0a0a0f] hive-flow">
+      <div className="h-[min(65vh,700px)] min-h-[560px] w-full rounded-xl border border-border overflow-hidden bg-[#0a0a0f] hive-flow">
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -146,17 +146,13 @@ function HiveMindFlow() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="mt-4 panel p-4 border-l-2 border-l-amber"
+            className="mt-6 panel p-6 border-l-4 border-l-amber"
           >
-            <p className="font-display text-lg text-amber mb-1">{info.title}</p>
-            <p className="font-mono text-xs text-muted">{info.body}</p>
+            <p className="font-display text-4xl text-amber mb-2">{info.title}</p>
+            <p className="font-mono text-body text-muted">{info.body}</p>
           </motion.div>
         )}
       </AnimatePresence>
-
-      <p className="font-mono text-[10px] text-muted text-center mt-3">
-        Pan & zoom · click nodes · Play flow tours the system
-      </p>
     </div>
   );
 }

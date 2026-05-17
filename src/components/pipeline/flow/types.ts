@@ -56,7 +56,7 @@ export const NODE_INFO: Record<string, { title: string; body: string }> = {
   'agent-2': { title: 'Agent 2', body: 'All agents converge — no isolated memory silos.' },
   'agent-3': { title: 'Agent 3', body: 'Every prompt feeds the same hive.' },
   embed: { title: 'Embedding', body: 'text-embedding-3-small → 1536-d vector.' },
-  hive: { title: 'HiveMind Memory', body: 'Shared Supabase pgvector store for all agents.' },
+  hive: { title: 'OpenHive Memory', body: 'Shared Supabase pgvector store for all agents.' },
   knn: { title: 'KNN Retrieval', body: 'Top-k similar prompts across all agents → intent bucket.' },
   markov: { title: 'Markov Router', body: 'Predicts highest-probability tool sequence.' },
   execute: { title: 'Execute', body: 'Runs the predicted tool path.' },

@@ -160,7 +160,7 @@ export function RaceMarkovGraph({
   if (graphData.nodes.length === 0) {
     return (
       <div className="h-[240px] bg-bg-2 border border-border rounded-lg flex items-center justify-center">
-        <p className="font-mono text-xs text-muted">No transitions recorded yet</p>
+        <p className="font-mono text-min text-muted">No transitions recorded yet</p>
       </div>
     );
   }

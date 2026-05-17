@@ -1,6 +1,6 @@
-# HiveMind
+# OpenHive
 
-Marketing site for **HiveMind** — shared collective memory for OpenHome voice agents.
+Marketing site for **OpenHive** — shared collective memory for OpenHome voice agents.
 
 ## Stack
 

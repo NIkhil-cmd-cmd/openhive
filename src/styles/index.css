@@ -14,6 +14,13 @@
   --teal: #0d7377;
   --teal-light: #14a8ae;
   --border: rgba(245, 166, 35, 0.15);
+
+  /* Projection floor — nothing on screen goes below these */
+  --font-min: 1.125rem;
+  --font-label: 1.25rem;
+  --font-body: 1.375rem;
+  --font-body-lg: 1.625rem;
+  --font-stat: 4rem;
 }
 
 * {
@@ -22,17 +29,70 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  font-size: 18px;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--white);
-  font-family: 'DM Mono', 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.6;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: var(--font-body);
+  line-height: 1.55;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+.presentation {
+  scroll-snap-type: y mandatory;
+}
+
+.presentation .font-mono,
+.presentation button,
+.presentation input,
+.presentation select {
+  font-size: max(var(--font-min), 1.125rem);
+}
+
+.slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.slide-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(3.25rem, 10vw, 6.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+}
+
+.text-min {
+  font-size: var(--font-min);
+  line-height: 1.5;
+}
+
+.text-label {
+  font-size: var(--font-label);
+  line-height: 1.45;
+}
+
+.text-body {
+  font-size: var(--font-body);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.text-body-lg {
+  font-size: var(--font-body-lg);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.text-stat {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(var(--font-stat), 12vw, 8rem);
+  line-height: 0.95;
 }
 
 h1,
@@ -55,6 +115,7 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  font-size: max(var(--font-min), 1.125rem);
 }
 
 ::selection {
@@ -91,10 +152,16 @@ button {
 
 .hive-flow .react-flow__edge-path {
   stroke-linecap: round;
+  stroke-width: 3;
 }
 
 .hive-flow .react-flow__node {
   cursor: pointer;
+}
+
+.hive-flow .react-flow__controls button {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .hero-vignette {

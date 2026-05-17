@@ -1,18 +1,17 @@
 import { motion } from 'framer-motion';
-import { Section } from '../ui/Section';
 
 export function CTA() {
   return (
-    <Section id="cta" showGrid={false} className="border-t border-border py-16">
+    <section className="slide snap-start py-16 border-t border-border">
       <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="font-mono text-sm text-muted text-center"
+        className="font-sans text-body-lg text-muted text-center"
       >
-        Made by <span className="text-amber">Advaiyt Sane</span> and{' '}
-        <span className="text-amber">Nikhil Krishnaswamy</span>
+        Made by <span className="text-amber font-medium">Advaiyt Sane</span> and{' '}
+        <span className="text-amber font-medium">Nikhil Krishnaswamy</span>
       </motion.p>
-    </Section>
+    </section>
   );
 }
