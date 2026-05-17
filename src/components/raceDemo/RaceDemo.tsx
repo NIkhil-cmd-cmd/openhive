@@ -6,7 +6,7 @@ import { AgentPanel } from './AgentPanel';
 import { EmbeddingCloud } from './EmbeddingCloud';
 import { RaceMarkovGraph } from './RaceMarkovGraph';
 import {
-  REAL_ESTATE_PROMPT,
+  FLIGHT_BOOKING_PROMPT,
   COLD_STEPS,
   WARM_STEPS,
   COLD_MARKOV_PATH,
@@ -196,7 +196,7 @@ export function RaceDemo() {
         viewport={{ once: true }}
         className="font-mono text-sm text-muted text-center mb-10 max-w-xl mx-auto leading-relaxed"
       >
-        A real estate agent runs cold with no memory — then HiveMind loads 40 historical traces
+        A booking agent runs cold with no memory — then HiveMind loads 40 historical traces
         and runs the same task in{' '}
         <span className="text-amber">{SAVINGS_PCT}% fewer tokens</span> and{' '}
         <span className="text-teal-light">{SPEED_PCT}% less time</span>.
@@ -210,7 +210,7 @@ export function RaceDemo() {
         className="panel p-5 mb-8 max-w-3xl mx-auto"
       >
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-[10px] text-amber tracking-widest">INCOMING BUYER PROMPT</span>
+          <span className="font-mono text-[10px] text-amber tracking-widest">INCOMING BOOKING REQUEST</span>
           <AnimatePresence>
             {showPromptEmbed && (
               <motion.span
@@ -225,13 +225,13 @@ export function RaceDemo() {
                 >
                   ●
                 </motion.span>{' '}
-                embedding generated → first_time_buyer cluster
+                embedding generated → budget_traveler cluster
               </motion.span>
             )}
           </AnimatePresence>
         </div>
         <p className="font-mono text-sm text-white leading-relaxed">
-          &ldquo;{REAL_ESTATE_PROMPT}&rdquo;
+          &ldquo;{FLIGHT_BOOKING_PROMPT}&rdquo;
         </p>
       </motion.div>
 
@@ -341,7 +341,7 @@ export function RaceDemo() {
 
             <div className="panel p-4">
               <h3 className="font-mono text-[10px] text-amber tracking-widest mb-3">
-                MARKOV GRAPH · REAL ESTATE WORKFLOW
+                MARKOV GRAPH · FLIGHT BOOKING WORKFLOW
               </h3>
               <RaceMarkovGraph
                 state={markovState}
