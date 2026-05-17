@@ -7,6 +7,7 @@ interface SectionProps {
   className?: string;
   tone?: 'default' | 'elevated';
   showGrid?: boolean;
+  innerClassName?: string;
 }
 
 export function Section({
@@ -15,6 +16,7 @@ export function Section({
   className = '',
   tone = 'default',
   showGrid = true,
+  innerClassName = '',
 }: SectionProps) {
   return (
     <section
@@ -24,7 +26,7 @@ export function Section({
       {showGrid && (
         <HexGrid opacity={0.025} animated={false} pulse={false} className="z-0" />
       )}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">{children}</div>
+      <div className={`relative z-10 max-w-6xl mx-auto px-6 md:px-10 ${innerClassName}`}>{children}</div>
     </section>
   );
 }

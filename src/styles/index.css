@@ -89,6 +89,14 @@ button {
   @apply bg-bg-2 border border-border rounded-xl;
 }
 
+.hive-flow .react-flow__edge-path {
+  stroke-linecap: round;
+}
+
+.hive-flow .react-flow__node {
+  cursor: pointer;
+}
+
 .hero-vignette {
   background: radial-gradient(
     ellipse 85% 70% at 50% 42%,
